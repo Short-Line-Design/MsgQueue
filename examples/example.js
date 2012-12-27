@@ -88,7 +88,7 @@ msgQueue.createRedisMsgQueue(app, 'abc123', function (error, myQueue) {
     queue.register(function (myTask, callback) {
         console.log('The abc123 grouped worker - processing task ' + util.inspect(myTask) + '.');
         if (myTask.number && myTask.number < 5) {
-            // Add a new tasks to the ungrouped message queue from within the worker
+            // Add a new tasks to the abc123 grouped message queue from within the worker
             var task = { name:'abc123-worker-task ' + (myTask.number + 1), number: (myTask.number + 1) };
             queue.enqueue('xyz789', task, function (error, myTask) {
                 if (error) {
@@ -104,7 +104,7 @@ msgQueue.createRedisMsgQueue(app, 'abc123', function (error, myQueue) {
         return setTimeout(function (myTask, callback) {
             console.log('The abc123 grouped worker - completed processing task ' + util.inspect(myTask) + '.');
             if (myTask.number && myTask.number < 5) {
-                // Add a new tasks to the ungrouped message queue from within the worker
+                // Add a new tasks to the abc123 grouped message queue from within the worker
                 var task = { name:'abc123-worker-task ' + (myTask.number + 101), number: (myTask.number + 101) };
                 queue.enqueue('xyz789', task, function (error, myTask) {
                     if (error) {
@@ -115,7 +115,7 @@ msgQueue.createRedisMsgQueue(app, 'abc123', function (error, myQueue) {
                     return console.log('The abc123 grouped worker added task ' + util.inspect(myTask) + ' to the abc123 grouped message queue.');
                 });
             } else if (myTask.number && myTask.number >= 100 && myTask.number < 105) {
-                // Add a new tasks to the ungrouped message queue from within the worker
+                // Add a new tasks to the abc123 grouped message queue from within the worker
                 var task = { name:'abc123-worker-task ' + (myTask.number + 1001), number: (myTask.number + 1001) };
                 queue.enqueue('xyz789', task, function (error, myTask) {
                     if (error) {
