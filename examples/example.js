@@ -8,6 +8,7 @@
  */
 
 var _ = require('underscore'),
+    async = require('async'),
     util = require('util'),
 
     msgQueue = require('../index');
@@ -201,4 +202,26 @@ queues.forEach(function (queue) {
             });
         }
     });
+});
+
+// ----------------------------------------------------------------------------------------------------
+// Shutdown some of the message queues
+// ----------------------------------------------------------------------------------------------------
+process.on('SIGINT', function () {
+    // Shutdown the message queues
+    async.parallel([
+        function (callback) {
+            return msgQueue.destroyRedisMsgQueue(app, 'unqueue', callback);
+        },
+        function (callback) {
+            return msgQueue.destroyRedisMsgQueue(app, 'abc123', callback);
+        }
+    ], function (error) {
+        // Exit the process
+        process.exit();
+    });
+});
+
+process.on('exit', function () {
+    console.log('The example is now exiting.');
 });
