@@ -1,5 +1,5 @@
 {
-  "version": "0.7.7",
+  "version": "0.7.9",
   "name": "msg-queue",
   "description": "A lightweight message queue using either mongodb or redis as the data store.",
   "author": "Dan Prescott <danpres14@gmail.com> - Short Line Design Inc.",
@@ -9,15 +9,15 @@
     "url": "git@github.com:Short-Line-Design/MsgQueue.git"
   },
   "dependencies": {
-    "underscore": "1.4.x",
-    "async": "0.1.x",
-    "mongodb": "1.2.x",
-    "redis": "0.8.x"
+    "underscore": "1.5.2",
+    "async": "0.2.9",
+    "mongodb": "1.3.20",
+    "redis": "0.9.1"
   },
   "devDependencies": {
   },
   "engines": {
-    "node": ">= 0.8.9"
+    "node": ">= 0.10.20"
   },
   "keywords": [
     "message queue",
